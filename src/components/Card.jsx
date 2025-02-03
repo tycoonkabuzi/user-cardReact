@@ -1,19 +1,21 @@
 import styles from "../styles/components/Card.module.scss";
-const Card = () => {
+const Card = ({ userData }) => {
   return (
     <div className={styles.main}>
-      <div className={styles.names}>
-        <p>Name: Kabuzi </p>
-        <p>Surname: Kabuzi </p>
-      </div>
+      {userData.map((user, index) => (
+        <div className={styles.card} key={index}>
+          <div
+            className={styles.names}
+            style={{ backgroundColor: user.isHighlight ? "red" : "" }}
+          >
+            <p>Name: {user.name}</p>
+            <p>Surname:{user.surname} </p>
+          </div>
 
-      <hr />
-      <p>
-        Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Ipsum perferendis modi, quibusdam expedita sequi sint natus, eius
-        eveniet blanditiis dolor ad quia a corporis cupiditate vitae, tenetur
-        quisquam pariatur ut.
-      </p>
+          <hr />
+          <p>Description:{user.description}</p>
+        </div>
+      ))}
     </div>
   );
 };
